@@ -41,6 +41,12 @@ public partial class WebForm1 : System.Web.UI.Page
             Label1.Text = MSG + filePath;
 //            Label1.Text = "The uploaded files was saved as " + filePath;
         }
+        //20200128 UPDATE START 
+        else
+        {
+            Response.Write("<H3><font color='red'>ファイルを選択してください。</font></H3>");
+        }
+        //20200128 UPDATE END
     }
 
     //20200124 ADD 
