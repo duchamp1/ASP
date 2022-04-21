@@ -3,13 +3,10 @@
 //20200124 アップロードによりタイムスタンプが更新されてしまうため、ファイルコピー処理に変更 
 //         「終了」ボタン追加 
 //20200508 Gitにアップ・コメント削除
+//20220421 アップロード仕様変更によりファイルコピー処理が使用不可になったためファイル保存処理に戻す 
+
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 public partial class WebForm1 : System.Web.UI.Page
 {
@@ -29,12 +26,12 @@ public partial class WebForm1 : System.Web.UI.Page
             //アップロード先
             string path = SAVEPATH;
             //ファイル名の取得
-            string oldFileName = FileUpload1.PostedFile.FileName;
             string fileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
             //パスとファイル名の連結
             string filePath = Path.Combine(path, fileName);
-            //ファイルコピー
-            File.Copy(oldFileName, filePath);
+            //ファイル保存
+            FileUpload1.SaveAs(filePath);
+
             Label1.Text = MSG + filePath;
         }
         else
